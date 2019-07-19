@@ -84,4 +84,6 @@ array = [88,21,78,22,3,4]
 #puts array.my_any? {|x| x>88 }
 
 #puts array.none? {|x| x>88 }
-$puts array.my_none? {|x| x>88 }
+#puts array.my_none? {|x| x>88 }
+
+puts array.count {|num| num }
