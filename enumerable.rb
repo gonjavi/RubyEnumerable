@@ -43,8 +43,16 @@ module Enumerable
     end
 
     def my_count
+      counter = 0
+      if number
+        self.my_each {|x| counter += 1 if x == number}
+      elsif block_given?
+        self.my_each {|x| counter += 1 if yield(x)}
+      else
+        counter = self.length
+      end 
  
-      count
+      counter
 
     end
 
