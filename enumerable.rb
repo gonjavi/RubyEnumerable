@@ -43,8 +43,9 @@ module Enumerable
     end
 
     def my_count
+      number=nil
       counter = 0
-      if number
+      if number 
         self.my_each {|x| counter += 1 if x == number}
       elsif block_given?
         self.my_each {|x| counter += 1 if yield(x)}
@@ -57,12 +58,28 @@ module Enumerable
     end
 
     def my_map
-
+        block=nil
+        array= Array.new()
+      if block
+        self.my_each_with_index {|x,index| array[index] = block.call(x)}
+      else
+        self.my_each_with_index {|x,index| array[index] = yield(x)}
+      end
+      array
+      
     end
     
     def my_inject
-
+      start=nil
+      start == nil ? ans = self[0] : ans = start
+  
+      for i in 1..self.length - 1 
+        ans = yield(ans,self[i])
+      end 
+      ans
     end
+
+    
 end
 
 
@@ -86,4 +103,8 @@ array = [88,21,78,22,3,4]
 #puts array.none? {|x| x>88 }
 #puts array.my_none? {|x| x>88 }
 
-puts array.count {|num| num }
+#puts array.count {|x| x }
+#puts array.my_count {|x| x }
+
+#puts array.map {|num| num * 10 }
+#puts array.my_map {|num| num * 10 }
