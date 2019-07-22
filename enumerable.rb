@@ -108,3 +108,7 @@ array = [88,21,78,22,3,4]
 
 #puts array.map {|num| num * 10 }
 #puts array.my_map {|num| num * 10 }
+
+#puts array.inject {|x,y| x * y}
+
+#puts array.my_inject {|x,y| x * y}
